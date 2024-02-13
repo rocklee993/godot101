@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://qinondu0hbt"]
+
+[ext_resource type="PackedScene" uid="uid://8a1mqjjen1if" path="res://player.tscn" id="1_7rerg"]
+[ext_resource type="Script" path="res://level.gd" id="1_nkpt7"]
+[ext_resource type="Texture2D" uid="uid://bq34dj734vit1" path="res://Assets/graphics/ground/stones.png" id="2_o2qkv"]
+[ext_resource type="Texture2D" uid="uid://cquqqt2sjmbri" path="res://Assets/graphics/tilesets/outside_walls.png" id="3_2o0qx"]
+[ext_resource type="PackedScene" uid="uid://ces7khmepwjwa" path="res://gate.tscn" id="3_4401n"]
+[ext_resource type="Texture2D" uid="uid://bp5k04ounlew5" path="res://Assets/graphics/ground/Mesh.png" id="3_ulvbn"]
+[ext_resource type="Texture2D" uid="uid://jgvnmbrss0tw" path="res://Assets/graphics/tilesets/soil.png" id="4_ojgvu"]
+[ext_resource type="PackedScene" uid="uid://crrn1qhrkf1cc" path="res://light.tscn" id="7_ovgbm"]
+[ext_resource type="PackedScene" uid="uid://ca85e36htrpk5" path="res://house.tscn" id="8_ef3kh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hpwpi"]
+texture = ExtResource("3_2o0qx")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i4rur"]
+texture = ExtResource("4_ojgvu")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cjuxy"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_hpwpi")
+sources/1 = SubResource("TileSetAtlasSource_i4rur")
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_nkpt7")
+
+[node name="ground" type="Node2D" parent="."]
+
+[node name="soil" type="Sprite2D" parent="ground"]
+texture_repeat = 2
+position = Vector2(460, -589)
+scale = Vector2(1.85291, 1.82805)
+texture = ExtResource("2_o2qkv")
+region_enabled = true
+region_rect = Rect2(-2000, -630.247, 5000, 3000.89)
+
+[node name="Mesh2" type="Sprite2D" parent="ground"]
+position = Vector2(-1581, -21)
+texture = ExtResource("3_ulvbn")
+
+[node name="Mesh" type="Sprite2D" parent="ground"]
+position = Vector2(1629, -409)
+texture = ExtResource("3_ulvbn")
+
+[node name="TileMap" type="TileMap" parent="ground"]
+position = Vector2(-1, 0)
+tile_set = SubResource("TileSet_cjuxy")
+format = 2
+layer_0/name = "soil"
+layer_0/tile_data = PackedInt32Array(-65531, 65537, 1, -65532, 65537, 1, -65530, 65537, 1, 196606, 1, 2, -4, 65537, 1, -196602, 65537, 1, -196603, 65537, 1, -196604, 65537, 1, -196605, 65537, 1, -196606, 65537, 1, -196607, 65537, 1, -196608, 65537, 1, -131073, 65537, 1, -131074, 65537, 1, -131075, 65537, 1, -196611, 65537, 1, -196610, 65537, 1, -262146, 65537, 1, -262145, 65537, 1, -262144, 65537, 1, -262143, 65537, 1, -196609, 65537, 1, -327680, 65537, 1, -65535, 65537, 1, -65539, 65537, 1, -65540, 65537, 1, -3, 65537, 1, 65532, 65537, 1, 65531, 65537, 1, 131067, 65537, 1, 131068, 65537, 1, 131069, 65537, 1, 65533, 65537, 1, 131070, 65537, 1, 131071, 65537, 1, 65536, 65537, 1, 65537, 65537, 1, 65538, 65537, 1, 65539, 65537, 1, 65540, 65537, 1, 4, 65537, 1, 5, 65537, 1, 6, 65537, 1, 65542, 65537, 1, 65541, 65537, 1, 3, 65537, 1, 2, 65537, 1, -2, 65537, 1, -65538, 65537, 1, -131069, 65537, 1, -131070, 65537, 1, -131071, 65537, 1, -131072, 65537, 1, -65537, 65537, 1, 1, 65537, 1, 0, 65537, 1, 65535, 65537, 1, 65534, 65537, 1, 262147, 65537, 1, 262146, 65537, 1, 262145, 65537, 1, 262144, 65537, 1, 327679, 65537, 1, 327678, 65537, 1, 262143, 65537, 1, 196608, 65537, 1, 196609, 65537, 1, 196610, 65537, 1, 196607, 65537, 1, 131074, 65537, 1, 131075, 131073, 2)
+layer_1/name = "walls"
+layer_1/tile_data = PackedInt32Array(65529, 0, 2, 131065, 0, 2, 196601, 65536, 2, 196602, 65536, 0, 196603, 65536, 0, 196604, 65536, 0, 196605, 65536, 0, 196606, 65536, 0, 196607, 131072, 1, 131074, 65536, 1, 131075, 65536, 0, 131076, 65536, 0, 131077, 65536, 0, 131078, 65536, 0, 131079, 65536, 0, 131080, 131072, 2, 65544, 0, 2, 8, 0, 2, 196611, 65536, 0, 262142, 65536, 0, 262141, 65536, 1, 196612, 131072, 1, 327677, 0, 2, 393213, 65536, 2, 327684, 131072, 2, 262148, 0, 2, 327683, 65536, 0, 327682, 65536, 0, 327681, 65536, 0, 327680, 65536, 0, 393215, 65536, 0, 393214, 65536, 0, 262147, 65537, 1, 262146, 65537, 1, 262145, 65537, 1, 262144, 65537, 1, 327679, 65537, 1, 327678, 65537, 1, 262143, 131072, 2, 196610, 65536, 2, 131073, 65537, 1, 131072, 65537, 1, -7, 0, 2, -65543, 0, 2, -131064, 0, 2, -65528, 0, 2, -196600, 131072, 1, -131079, 65536, 1, -131078, 65536, 0, -131077, 65536, 0, -131076, 65536, 0, -131075, 65536, 0, -131074, 65536, 0, -131073, 65536, 0, -196608, 65536, 0, -196607, 65536, 0, -196606, 65536, 0, -196605, 65536, 0, -196604, 65536, 0, -196603, 65536, 0, -196602, 65536, 0, -196601, 65536, 0)
+
+[node name="house" parent="ground" instance=ExtResource("8_ef3kh")]
+position = Vector2(-2406, 4424)
+scale = Vector2(0.737336, 0.684179)
+
+[node name="light6" parent="ground/house" instance=ExtResource("7_ovgbm")]
+position = Vector2(-23, 2165)
+scale = Vector2(1.80951, 1.82241)
+
+[node name="light4" parent="ground/house" instance=ExtResource("7_ovgbm")]
+position = Vector2(-2145, 19.0005)
+rotation = 1.5708
+scale = Vector2(1.80951, 1.82241)
+
+[node name="light" parent="ground/house" instance=ExtResource("7_ovgbm")]
+position = Vector2(2064, -21)
+rotation = 1.5708
+scale = Vector2(1.80951, 1.82241)
+
+[node name="gate" parent="ground" instance=ExtResource("3_4401n")]
+position = Vector2(-75, -221)
+
+[node name="player" parent="." instance=ExtResource("1_7rerg")]
+position = Vector2(-2396, 4433)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+
+[node name="projectiles" type="Node2D" parent="."]
+
+[connection signal="player_entered_gate" from="ground/gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="grenaded" from="player" to="." method="_on_player_grenaded"]
+[connection signal="lasered" from="player" to="." method="_on_player_lasered"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://8a1mqjjen1if"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_jw27c"]
+[ext_resource type="Texture2D" uid="uid://8grs8b1f54jx" path="res://Assets/Images/survivor-move_shotgun_0.png" id="2_oxxgh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fl3ph"]
+radius = 58.0775
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(6, 3)
+script = ExtResource("1_jw27c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.34902, 0.819608, 0.85098, 1)
+self_modulate = Color(0, 0.937255, 1, 1)
+position = Vector2(-9.06232, -15.5037)
+scale = Vector2(0.552692, 0.64988)
+texture = ExtResource("2_oxxgh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-36, -5)
+shape = SubResource("CircleShape2D_fl3ph")
+
+[node name="laser_timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="grenade_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="laser_start_pos" type="Node2D" parent="."]
+position = Vector2(1, -1)
+
+[node name="Marker2D" type="Marker2D" parent="laser_start_pos"]
+position = Vector2(71, 16)
+
+[connection signal="timeout" from="laser_timer" to="." method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
